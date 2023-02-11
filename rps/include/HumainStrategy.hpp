@@ -6,10 +6,10 @@
 
 namespace rps {
 
-class UserStrategy : public IStrategy {
+class HumainStrategy : public IStrategy {
    public:
-    UserStrategy();
-    virtual ~UserStrategy();
+    HumainStrategy();
+    virtual ~HumainStrategy();
 
     virtual RPS_CHOICE createRPSChoice() override;
 

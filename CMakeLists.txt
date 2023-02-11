@@ -19,4 +19,4 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_FOLDER "third-party")
 
 add_subdirectory(rps)
-#add_subdirectory(test/gtest)
+add_subdirectory(test/gtest/rps)

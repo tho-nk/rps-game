@@ -5,7 +5,8 @@
 
 #include "HumainPlayer.hpp"
 #include "MachinePlayer.hpp"
-#include "UserStrategy.hpp"
+#include "HumainStrategy.hpp"
+#include "Utilities.hpp"
 
 namespace rps {
 
@@ -16,9 +17,18 @@ Game::Game()
 
 Game::~Game() {}
 
-void Game::init() {
-    mPlayer_->setStrategy(gameDificulty_->getGameStrategy(GAME_LEVEL::EASY));
-    hPlayer_->setStrategy(std::make_shared<UserStrategy>());
+void Game::configure() {}
+
+void Game::initialize() {
+    mPlayer_->setStrategy(gameDificulty_->getGameStrategy());
+    hPlayer_->setStrategy(std::make_shared<HumainStrategy>());
+}
+
+void Game::changeGameDificulty() {
+    std::cout << "please set your level : 0 <-> EASY, 1 <-> MEDIUM, 2 <-> HARD"
+              << std::endl;
+    gameDificulty_->setLevel(getUserInputIngeter<GAME_LEVEL>(0, 2));
+    mPlayer_->setStrategy(gameDificulty_->getGameStrategy());
 }
 
 ROUND_RESULT Game::getRoundResult(int hChoice, int mChoice) {
@@ -45,12 +55,18 @@ void Game::InterpretRoundResult(const rps::ROUND_RESULT& roundResult) {
 
 void Game::run() {
     while (true) {
-        auto hChoice = hPlayer_->getRPSChoice();
-        auto mChoice = mPlayer_->getRPSChoice();
+        int i = 0;
+        while (i < 3) {
+            auto hChoice = hPlayer_->getRPSChoice();
+            auto mChoice = mPlayer_->getRPSChoice();
 
-        auto roundResult = getRoundResult(static_cast<int>(hChoice),
-                                          static_cast<int>(mChoice));
-        InterpretRoundResult(roundResult);
+            auto roundResult = getRoundResult(static_cast<int>(hChoice),
+                                              static_cast<int>(mChoice));
+            InterpretRoundResult(roundResult);
+            i++;
+        }
+        std::cout << "select a new level" << std::endl;
+        changeGameDificulty();
     }
 }
 

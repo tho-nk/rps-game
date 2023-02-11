@@ -9,15 +9,17 @@
 
 namespace rps {
 
-enum class ROUND_RESULT { DRAW, LOSE, WIN };
+enum class ROUND_RESULT { DRAW = 0, LOSE = 1, WIN = 2 };
 
 class Game {
    public:
     Game();
     ~Game();
 
-    void init();
+    void configure();
+    void initialize();
     void run();
+    void changeGameDificulty();
 
    private:
     ROUND_RESULT getRoundResult(int hChoice, int mChoice);
