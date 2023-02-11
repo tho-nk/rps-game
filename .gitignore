@@ -1,0 +1,10 @@
+build/
+.vscode/
+.clangd/
+
+__pycache__/
+.ipynb_checkpoints/
+*.py[cod]
+*$py.class
+
+third-party/
