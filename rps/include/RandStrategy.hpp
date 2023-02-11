@@ -12,7 +12,5 @@ class RandStrategy : public IStrategy {
     virtual ~RandStrategy();
 
     virtual RPS_CHOICE createRPSChoice() override;
-
-   private:
 };
 }  // namespace rps

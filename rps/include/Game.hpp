@@ -19,11 +19,11 @@ class Game {
     void configure();
     void initialize();
     void run();
-    void changeGameDificulty();
 
    private:
     ROUND_RESULT getRoundResult(int hChoice, int mChoice);
     void InterpretRoundResult(const rps::ROUND_RESULT& roundResult);
+    void changeGameDificulty();
 
     std::shared_ptr<IPlayer> mPlayer_;
     std::shared_ptr<IPlayer> hPlayer_;

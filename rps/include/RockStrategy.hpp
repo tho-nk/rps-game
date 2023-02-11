@@ -12,7 +12,5 @@ class RockStrategy : public IStrategy {
     virtual ~RockStrategy();
 
     virtual RPS_CHOICE createRPSChoice() override;
-
-   private:
 };
 }  // namespace rps

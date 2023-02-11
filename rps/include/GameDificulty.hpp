@@ -36,7 +36,8 @@ class GameDificulty {
         : rockStrategy_(std::make_shared<RockStrategy>()),
           semiRandStrategy_(std::make_shared<SemiRandStrategy>()),
           randStrategy_(std::make_shared<RandStrategy>()),
-          level_(GAME_LEVEL::HARD) {}
+          level_(GAME_LEVEL::EASY) {}
+
     ~GameDificulty() {}
 
     std::shared_ptr<IStrategy> getGameStrategy() {

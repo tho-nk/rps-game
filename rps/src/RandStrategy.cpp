@@ -1,4 +1,3 @@
-
 #include "RandStrategy.hpp"
 
 #include <iostream>
@@ -7,7 +6,7 @@
 namespace rps {
 
 RandStrategy::RandStrategy() {
-    std::cout << "create RandStrategy" << std::endl;
+    std::cout << "Create RandStrategy" << std::endl;
 }
 RandStrategy::~RandStrategy() {}
 

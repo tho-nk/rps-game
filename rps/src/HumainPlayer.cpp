@@ -9,8 +9,8 @@ HumainPlayer::HumainPlayer() {
 HumainPlayer::~HumainPlayer() {}
 
 RPS_CHOICE HumainPlayer::getRPSChoice() {
-    auto choice = strategy_->createRPSChoice();
-    std::cout << "HumainPlayer Choice : " << choice << std::endl;
+    const auto choice = strategy_->createRPSChoice();
+    std::cout << "Your RPS is : " << choice << std::endl;
     return choice;
 }
 

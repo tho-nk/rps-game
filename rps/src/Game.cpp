@@ -4,8 +4,8 @@
 #include <memory>
 
 #include "HumainPlayer.hpp"
-#include "MachinePlayer.hpp"
 #include "HumainStrategy.hpp"
+#include "MachinePlayer.hpp"
 #include "Utilities.hpp"
 
 namespace rps {
@@ -25,30 +25,33 @@ void Game::initialize() {
 }
 
 void Game::changeGameDificulty() {
-    std::cout << "please set your level : 0 <-> EASY, 1 <-> MEDIUM, 2 <-> HARD"
-              << std::endl;
-    gameDificulty_->setLevel(getUserInputIngeter<GAME_LEVEL>(0, 2));
+    std::cout
+        << "0 <-> EASY, 1 <-> MEDIUM, 2 <-> HARD, please select your level : "
+        << std::endl;
+    const auto level = getUserInputIngeter<GAME_LEVEL>(0, 2);
+    gameDificulty_->setLevel(level);
     mPlayer_->setStrategy(gameDificulty_->getGameStrategy());
 }
 
 ROUND_RESULT Game::getRoundResult(int hChoice, int mChoice) {
-    std::cout << "hChoice := " << hChoice << ", mChoice := " << mChoice
-              << std::endl;
+    std::cout << "your choice := " << hChoice
+              << ", machine choice := " << mChoice << std::endl;
     return gameReference_[hChoice][mChoice];
 }
 
 void Game::InterpretRoundResult(const rps::ROUND_RESULT& roundResult) {
     switch (roundResult) {
         case ROUND_RESULT::DRAW:
-            std::cout << "user gets draw game round" << std::endl;
+            std::cout << "you get a draw round" << std::endl;
             break;
         case ROUND_RESULT::LOSE:
-            std::cout << "user get lose game round" << std::endl;
+            std::cout << "you get a lose round" << std::endl;
             break;
         case ROUND_RESULT::WIN:
-            std::cout << "user gets win game round" << std::endl;
+            std::cout << "you get a win round" << std::endl;
             break;
         default:
+            std::cout << "undefined result" << std::endl;
             break;
     }
 }
@@ -65,7 +68,7 @@ void Game::run() {
             InterpretRoundResult(roundResult);
             i++;
         }
-        std::cout << "select a new level" << std::endl;
+        std::cout << "Do you like to retry with a new level" << std::endl;
         changeGameDificulty();
     }
 }

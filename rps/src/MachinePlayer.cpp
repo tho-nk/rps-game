@@ -3,14 +3,14 @@
 
 namespace rps {
 MachinePlayer::MachinePlayer() {
-    std::cout << "create MachinePlayer" << std::endl;
+    std::cout << "Create MachinePlayer" << std::endl;
 }
 
 MachinePlayer::~MachinePlayer() {}
 
 RPS_CHOICE MachinePlayer::getRPSChoice() {
     auto choice = strategy_->createRPSChoice();
-    std::cout << "MachinePlayer Choice : " << choice << std::endl;
+    std::cout << "MachinePlayer's RPS : " << choice << std::endl;
     return choice;
 }
 }  // namespace rps

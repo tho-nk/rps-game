@@ -8,5 +8,4 @@ int main() {
     aGame->configure();
     aGame->initialize();
     aGame->run();
-    std::cout << "hello tho" << std::endl;
 }

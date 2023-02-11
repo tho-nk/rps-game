@@ -30,7 +30,5 @@ class IStrategy {
     virtual ~IStrategy() {}
 
     virtual RPS_CHOICE createRPSChoice() = 0;
-
-   private:
 };
 }  // namespace rps

@@ -7,7 +7,7 @@
 namespace rps {
 
 SemiRandStrategy::SemiRandStrategy() {
-    std::cout << "create SemiRandStrategy" << std::endl;
+    std::cout << "Create SemiRandStrategy" << std::endl;
 }
 SemiRandStrategy::~SemiRandStrategy() {}
 

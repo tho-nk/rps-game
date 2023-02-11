@@ -12,7 +12,5 @@ class HumainStrategy : public IStrategy {
     virtual ~HumainStrategy();
 
     virtual RPS_CHOICE createRPSChoice() override;
-
-   private:
 };
 }  // namespace rps

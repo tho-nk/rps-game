@@ -7,7 +7,7 @@
 namespace rps {
 
 RockStrategy::RockStrategy() {
-    std::cout << "create RockStrategy" << std::endl;
+    std::cout << "Create RockStrategy" << std::endl;
 }
 RockStrategy::~RockStrategy() {}
 
