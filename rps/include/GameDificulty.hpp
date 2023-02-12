@@ -32,13 +32,17 @@ inline std::ostream& operator<<(std::ostream& os, const GAME_LEVEL& level) {
 
 class GameDificulty {
    public:
-    GameDificulty()
-        : rockStrategy_(std::make_shared<RockStrategy>()),
-          semiRandStrategy_(std::make_shared<SemiRandStrategy>()),
-          randStrategy_(std::make_shared<RandStrategy>()),
-          level_(GAME_LEVEL::EASY) {}
+    static GameDificulty& getInstance() {
+        static GameDificulty instance;
+        return instance;
+    }
 
-    ~GameDificulty() {}
+    void initialize() {
+        rockStrategy_ = std::make_shared<RockStrategy>();
+        semiRandStrategy_ = std::make_shared<SemiRandStrategy>();
+        randStrategy_ = std::make_shared<RandStrategy>();
+        level_ = GAME_LEVEL::EASY;
+    }
 
     std::shared_ptr<IStrategy> getGameStrategy() {
         switch (level_) {
@@ -56,10 +60,17 @@ class GameDificulty {
                 break;
         }
     }
-
     void setLevel(const GAME_LEVEL& level) { level_ = level; }
 
    private:
+    GameDificulty() {
+        std::cout << "create Game Dificulty" << std::endl;
+        std::cout << "pre-create all strategies for machine player"
+                  << std::endl;
+    }
+
+    ~GameDificulty() {}
+
     std::shared_ptr<IStrategy> rockStrategy_;
     std::shared_ptr<IStrategy> semiRandStrategy_;
     std::shared_ptr<IStrategy> randStrategy_;

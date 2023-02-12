@@ -5,7 +5,9 @@
 #include <memory>
 
 #include "GameDificulty.hpp"
+#include "HumainPlayer.hpp"
 #include "IPlayer.hpp"
+#include "MachinePlayer.hpp"
 
 namespace rps {
 
@@ -13,7 +15,11 @@ enum class ROUND_RESULT { BEGIN = 0, DRAW = BEGIN, LOSE, WIN, COUNT };
 
 class Game {
    public:
-    Game();
+    Game(std::shared_ptr<MachinePlayer> mPlayer =
+             std::make_shared<MachinePlayer>(),
+         std::shared_ptr<HumainPlayer> hPlayer =
+             std::make_shared<HumainPlayer>(),
+         int numberRound = 3);
     ~Game();
 
     void configure();
@@ -26,11 +32,11 @@ class Game {
     bool getRetry();
     void setGameDificulty();
     void setNumberRound();
+    void initializeHumainPlayer();
 
     std::shared_ptr<IPlayer> mPlayer_;
     std::shared_ptr<IPlayer> hPlayer_;
 
-    std::shared_ptr<GameDificulty> gameDificulty_;
     int numberRound_;
 
     inline static const std::array<std::array<ROUND_RESULT, 3>, 3>

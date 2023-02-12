@@ -3,18 +3,14 @@
 #include <iostream>
 #include <memory>
 
-#include "HumainPlayer.hpp"
 #include "HumainStrategy.hpp"
-#include "MachinePlayer.hpp"
 #include "Utilities.hpp"
 
 namespace rps {
 
-Game::Game()
-    : mPlayer_(std::make_shared<MachinePlayer>()),
-      hPlayer_(std::make_shared<HumainPlayer>()),
-      gameDificulty_(std::make_shared<GameDificulty>()),
-      numberRound_(3) {}
+Game::Game(std::shared_ptr<MachinePlayer> mPlayer,
+           std::shared_ptr<HumainPlayer> hPlayer, int numberRound)
+    : mPlayer_(mPlayer), hPlayer_(hPlayer), numberRound_(numberRound) {}
 
 Game::~Game() {}
 
@@ -24,7 +20,11 @@ void Game::configure() {
 }
 
 void Game::initialize() {
-    mPlayer_->setStrategy(gameDificulty_->getGameStrategy());
+    GameDificulty::getInstance().initialize();
+    initializeHumainPlayer();
+}
+
+void Game::initializeHumainPlayer() {
     hPlayer_->setStrategy(std::make_shared<HumainStrategy>());
 }
 
@@ -36,8 +36,8 @@ void Game::setGameDificulty() {
 
     const auto level = getUserInputIngeterToEnum<GAME_LEVEL>();
     std::cout << "Selected Level : " << level << std::endl;
-    gameDificulty_->setLevel(level);
-    mPlayer_->setStrategy(gameDificulty_->getGameStrategy());
+    GameDificulty::getInstance().setLevel(level);
+    mPlayer_->setStrategy(GameDificulty::getInstance().getGameStrategy());
 }
 
 ROUND_RESULT Game::getRoundResult(int hChoice, int mChoice) {
