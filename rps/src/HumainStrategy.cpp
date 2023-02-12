@@ -13,9 +13,10 @@ HumainStrategy::HumainStrategy() {
 HumainStrategy::~HumainStrategy() {}
 
 RPS_CHOICE HumainStrategy::createRPSChoice() {
-    std::cout
-        << "Please select your RPS : 0 <-> ROCK, 1 <-> PAPER, 2 <-> SCISSORS"
-        << std::endl;
-    return getUserInputIngeter<RPS_CHOICE>(0, 2);
+    std::cout << "Please select your RPS" << std::endl;
+    std::cout << "0 <-> ROCK" << std::endl;
+    std::cout << "1 <-> PAPER" << std::endl;
+    std::cout << "2 <-> SCISSORS" << std::endl;
+    return getUserInputIngeterToEnum<RPS_CHOICE>();
 }
 }  // namespace rps

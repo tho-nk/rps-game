@@ -5,7 +5,8 @@
 
 int main() {
     auto aGame = std::make_shared<rps::Game>();
-    aGame->configure();
     aGame->initialize();
+    aGame->configure();
+    std::cout << "Game starts" << std::endl;
     aGame->run();
 }

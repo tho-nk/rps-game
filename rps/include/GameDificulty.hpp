@@ -10,7 +10,7 @@
 
 namespace rps {
 
-enum class GAME_LEVEL { EASY = 0, MEDIUM = 1, HARD = 2 };
+enum class GAME_LEVEL { BEGIN = 0, EASY = BEGIN, MEDIUM, HARD, COUNT };
 
 inline std::ostream& operator<<(std::ostream& os, const GAME_LEVEL& level) {
     switch (level) {

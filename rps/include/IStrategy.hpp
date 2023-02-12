@@ -4,7 +4,7 @@
 
 namespace rps {
 
-enum class RPS_CHOICE { ROCK = 0, PAPER = 1, SCISSORS = 2 };
+enum class RPS_CHOICE { BEGIN = 0, ROCK = BEGIN, PAPER, SCISSORS, COUNT };
 
 inline std::ostream& operator<<(std::ostream& os, const RPS_CHOICE& choice) {
     switch (choice) {
