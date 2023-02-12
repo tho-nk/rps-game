@@ -13,6 +13,12 @@ namespace rps {
 
 enum class ROUND_RESULT { BEGIN = 0, DRAW = BEGIN, LOSE, WIN, COUNT };
 
+struct Result {
+    int win = 0;
+    int draw = 0;
+    int lose = 0;
+};
+
 class Game {
    public:
     Game(std::shared_ptr<MachinePlayer> mPlayer =
@@ -26,13 +32,16 @@ class Game {
     void initialize();
     void run();
 
-   private:
     ROUND_RESULT getRoundResult(int hChoice, int mChoice);
-    void InterpretRoundResult(const rps::ROUND_RESULT& roundResult);
-    bool getRetry();
-    void setGameDificulty();
-    void setNumberRound();
-    void initializeHumainPlayer();
+
+   private:
+    void interpretRoundResult_(const rps::ROUND_RESULT& roundResult,
+                               Result& result);
+    bool getRetry_();
+    void setGameDificulty_();
+    void setNumberRound_();
+    void initializeHumainPlayer_();
+    void interpretGameResult_(const Result& result);
 
     std::shared_ptr<IPlayer> mPlayer_;
     std::shared_ptr<IPlayer> hPlayer_;
