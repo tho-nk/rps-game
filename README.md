@@ -1,4 +1,4 @@
-# IMC - C++ Coding Assignment
+# C++ Coding Challenges
 
 This application is tested on Ubuntu 22.04 and requires cmake 3.10+, gcc-11.3
 
@@ -19,7 +19,7 @@ run
 ````
 There are 2 kinds of player : HumainPlayer and MachinePlayer
 
-There are 4 kinds of strategy: HumainStrategy, RockStrategy, SeminRandStrategy, RandStrategy
+There are 4 kinds of strategy: HumainStrategy, RockStrategy, SemiRandStrategy, RandStrategy
 
 HumainPlayer takes HumainStrategy, which will get a choice from standard input
 
